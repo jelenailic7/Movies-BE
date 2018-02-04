@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(App\Movie::class, function (Faker $faker) {
     $values = collect([
         'Horror',
         'Western',
@@ -14,11 +14,11 @@ $factory->define(Model::class, function (Faker $faker) {
         'Drama'
     ]);
     return [
-        'name' => $faker->title,
+        'name' => $faker->text(60),
         'director' => $faker->name,
-        'imageUrl' => $faker->imageUrl($width = 200, $height = 200),
+        'image_url' => $faker->imageUrl($width = 200, $height = 200),
         'duration'=> $faker->numberBetween($min = 60, $max = 180),
-        'releaseDate'=> $faker->date($format = 'Y-m-d', $max = 'now'),
+        'release_date'=> $faker->date($format = 'Y-m-d', $max = 'now'),
         'genres'=> $values->random(3)
 
     ];
