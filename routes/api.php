@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/movies', 'MoviesController@index');
-Route::get('/movies/{id}','MoviesController@show');
-Route::post('/movies', 'MoviesController@store');
-Route::post('/movies', 'MoviesController@destroy');
+
+Route::get('movies', 'MoviesController@index');
+Route::get('movies/{id}','MoviesController@show');
+Route::post('movies', 'MoviesController@store');
+Route::delete('movies/{id}', 'MoviesController@destroy');
+Route::put('movies/{id}', 'MoviesController@update');
