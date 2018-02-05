@@ -14,4 +14,8 @@ class Movie extends Model
         'genres' => 'array',
     ];
 
+    public static function search($term)
+    {
+        return self::where('name','LIKE','%' .$term.'%')->get();
+    }
 }

@@ -14,7 +14,12 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        return Movie::all();
+        $term = request()->input('term');
+        if($term) {
+            return Movie::search($term);
+        } else {
+            return Movie::all();
+        }
 
     }
 
@@ -48,12 +53,7 @@ class MoviesController extends Controller
     public function show($id)
     {
      //   return Movie::findOrFail($id);
-     $name = request()->input('name');
-        if($name) {
-            return Movie::where('name','LIKE','%' .$name.'%')->get();
-        } else {
-            return Movie::all();
-        }
+        return Movie::find($id);
 
     }
 
