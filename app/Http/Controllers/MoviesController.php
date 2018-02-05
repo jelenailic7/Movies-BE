@@ -47,7 +47,13 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-        return Movie::findOrFail($id);
+     //   return Movie::findOrFail($id);
+     $name = request()->input('name');
+        if($name) {
+            return Movie::where('name','LIKE','%' .$name.'%')->get();
+        } else {
+            return Movie::all();
+        }
 
     }
 

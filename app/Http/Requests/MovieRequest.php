@@ -32,6 +32,7 @@ class MovieRequest extends FormRequest
             'duration'=> 'required|numeric|between:1,500',
            'release_date'=>  ['required', 
                     Rule::unique('movies')->where('name', request('name'))],
+          
             
         ];
     }
