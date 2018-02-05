@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
 
 class MovieRequest extends FormRequest
 {
@@ -24,7 +26,13 @@ class MovieRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'director' => 'required',
+            'image_url' => 'url',
+            'duration'=> 'required|numeric|between:1,500',
+           'release_date'=>  ['required', 
+                    Rule::unique('movies')->where('name', request('name'))],
+            
         ];
     }
 }
