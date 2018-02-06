@@ -16,7 +16,7 @@ class Movie extends Model
 
     public static function search($term)
     {
-       // return self::where('name','LIKE','%' .$term.'%')->get();
+       // return self::where('name','LIKE','%' .$term.'%')->get(); “/movies?term=night
         return self::where('name','LIKE','%' .$term.'%')->skip($skip)->take($take)->get();
 
     }

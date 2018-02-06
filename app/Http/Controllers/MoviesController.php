@@ -21,7 +21,7 @@ class MoviesController extends Controller
         if($term) {
             return Movie::search($term, $skip, $take);
         } else {
-            return Movie::skip($skip)->take($take)->get();
+            return Movie::paginate(5);
         }
 
     }
