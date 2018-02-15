@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/login', 'Auth\LoginController@authenticate');
+Route::post('/register','Auth\RegisterController@create');
+
 
 Route::middleware('jwt')->get('movies', 'MoviesController@index');
 Route::middleware('jwt')->get('movies/{id}','MoviesController@show');

@@ -44,7 +44,7 @@ class LoginController extends Controller
         $credentials = $request->only(['email','password']);
         try {
             if(! $token = \JWTAuth::attempt($credentials)){
-                return response()->json(['error'=>'invalid_credentials'],401);
+                return response()->json(['error'=>'invalid_credentials'],401); // return Response::json(false, HttpResponse::HTTP_UNAUTHORIZED);
             }
         } catch(JWTException $e){
             return response()->json(['error'=>'failed_to_create_token'],500);
